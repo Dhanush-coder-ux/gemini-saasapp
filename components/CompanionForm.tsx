@@ -24,6 +24,8 @@ import {
 } from "@/components/ui/select"
 import { subjects } from "@/constants"
 import { Textarea } from "./ui/textarea"
+import { createCompanion } from "@/lib/actions/companion.action"
+import { redirect } from "next/navigation"
 
 
 
@@ -55,8 +57,16 @@ const form = useForm<z.infer<typeof formSchema>>({
     },
 })
 
-const onSubmit =(values: z.infer<typeof formSchema>) =>{
-    console.log(values);
+const onSubmit = async(values: z.infer<typeof formSchema>) =>{
+    const Companion = await createCompanion(values);
+
+    if(Companion){
+      redirect(`/Learning/${Companion.id}`)
+    }else{
+      console.log('Failed create companion');
+      redirect('/');
+      
+    }
     
 
 }
@@ -173,10 +183,10 @@ const onSubmit =(values: z.infer<typeof formSchema>) =>{
                     <SelectContent>
                        
                             <SelectItem value="formal" >
-                                Male
+                                Formal
                            </SelectItem>
                             <SelectItem value="casual">
-                                Female
+                                Casual
                            </SelectItem>
                        
                     </SelectContent>
