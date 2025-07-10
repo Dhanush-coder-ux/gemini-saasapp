@@ -33,15 +33,19 @@ const NavBar = () => {
 
         <Link href="/">
         <div className="flex items-center gap-2.5 cursor-pointer">
-            <img src="/images/logos.png" width={65} height={65} alt="" />
+            <img src="/images/logo.png" width={65} height={65} alt="" />
         </div>
         </Link>
-   
-        <div  className="flex items-center gap-8 ">
-           <div className="hidden lg:flex">
-            <NavItems/>
+    
+        <div className="flex items-center gap-6 ">
+             <div className="hidden lg:flex rounded-lg p-4 bg-accent">
+                <NavItems/>
           
             </div>
+        </div>
+
+        <div  className="flex items-center gap-8 ">
+        
               <SignedOut>
                
                     <SignInButton>

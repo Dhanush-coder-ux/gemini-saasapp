@@ -12,7 +12,6 @@ const LearningVault =async  ({ searchParams }: SearchParams) => {
 
   const companions = await getAllCompanions({ subject , topic });
 
-  console.log(companions);
   
   
 
