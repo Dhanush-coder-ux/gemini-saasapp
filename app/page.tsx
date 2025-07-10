@@ -2,43 +2,36 @@ import CTA from "@/components/CTA"
 import LearningCard from "@/components/LearningCard"
 import LearningList from "@/components/LearningList"
 import { recentSessions } from "@/constants"
+import { getAllCompanions, getRecentSessions } from "@/lib/actions/companion.action"
 
-const Page = () => {
+const Page = async () => {
+  const companions = await getAllCompanions( {limit : 3});
+  const recentSessionsCompanions = await getRecentSessions( 10)
+
+
+
   return (
     <main>
       <h1 className='text-2xl'>Popular Learning</h1>
       <section className="home-section">
-        <LearningCard 
-        id="123"
-        name="AI Agentic"
-        topic="AI ML"
-        subject="ai"
-        duration={45}
-        color="white"
+
+        {companions.map(( companion) => (
+           <LearningCard 
+           key={companion.id}
+              {...companion}
          />
-        <LearningCard 
-        id="126"
-        name="AI Agentic "
-        topic="AI ML"
-        subject="ai"
-        duration={45}
-        color="white"
-         />
-        <LearningCard 
-        id="125"
-        name="AI Agentic"
-        topic="AI ML"
-        subject="ai"
-        duration={45}
-        color="white"
-         />
+          
+
+        ))}
+       
+       
         
       </section>
 
       <section className="home-section">
         <LearningList 
         title="Recently Completed the session"
-        companions={recentSessions}
+        companions={recentSessionsCompanions}
        classNames="w-2/3 max-lg:w-full"
         />
         <CTA/>
