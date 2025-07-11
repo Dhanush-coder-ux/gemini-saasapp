@@ -1,8 +1,7 @@
 'use server'
 import { auth } from "@clerk/nextjs/server";
 import { createSupabaseClient } from "../supabase";
-import { Columns } from "lucide-react";
-import Error from "next/error";
+
 
 export const createCompanion = async (formData: CreateCompanion) => {
   const { userId: author } = await auth();
