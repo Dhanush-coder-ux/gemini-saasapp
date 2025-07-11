@@ -2,7 +2,7 @@ import LearningCard from '@/components/LearningCard';
 import SearchInput from '@/components/SearchInput';
 import SubjectFilter from '@/components/SubjectFilter';
 import { getAllCompanions } from '@/lib/actions/companion.action';
-export const dynamic = "force-dynamic";
+
 
 const LearningVault =async  ({ searchParams }: SearchParams) => {
 

@@ -1,8 +1,10 @@
 import CTA from "@/components/CTA"
 import LearningCard from "@/components/LearningCard"
 import LearningList from "@/components/LearningList"
-import { recentSessions } from "@/constants"
+
 import { getAllCompanions, getRecentSessions } from "@/lib/actions/companion.action"
+
+export const dynamic = "force-dynamic";
 
 const Page = async () => {
   const companions = await getAllCompanions( {limit : 3});
