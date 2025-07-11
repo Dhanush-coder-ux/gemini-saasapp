@@ -11,6 +11,13 @@ const LearningVault =async  ({ searchParams }: SearchParams) => {
   const topic =filters.topic ? filters.topic : "";
 
   const companions = await getAllCompanions({ subject , topic });
+  if(Array.isArray(companions)){
+    console.log('yes');
+    
+  }else{
+    console.log("No");
+    
+  }
 
   
   
@@ -28,10 +35,13 @@ const LearningVault =async  ({ searchParams }: SearchParams) => {
 
 
         <section className='companions-grid'>
-         {companions.map((companion) => (
-          <LearningCard key={companion.id} {...companion} />
-        ))}
-
+                      {companions.map((companion) => (
+                    <LearningCard
+                        key={companion.id}
+                        {...companion}
+                        
+                    />
+                ))}
         </section>
     </main>
   )
