@@ -4,13 +4,18 @@ import CTA from "@/components/CTA"
 import LearningCard from "@/components/LearningCard"
 import LearningList from "@/components/LearningList"
 
-import { getAllCompanions, getRecentSessions } from "@/lib/actions/companion.action"
+import { getAllCompanions, getRecentSessions, getUserSessions } from "@/lib/actions/companion.action"
+import { currentUser } from "@clerk/nextjs/server";
 
 
 
 const Page = async () => {
   const companions = await getAllCompanions( {limit : 3});
-  const recentSessionsCompanions = await getRecentSessions( 10)
+  const user = await currentUser();
+
+
+  
+  const recentSessionsCompanions = await getUserSessions(user?.id,{limit :  10})
 
 
 

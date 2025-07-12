@@ -38,8 +38,7 @@ const LearningVault =async  ({ searchParams }: SearchParams) => {
                       {companions.map((companion)=> (
                     <LearningCard
                         key={companion.id}
-                        {...companion}
-                        
+                        {...companion}   
                     />
                 ))}
         </section>
