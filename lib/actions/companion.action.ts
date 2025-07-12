@@ -93,7 +93,7 @@ export const getUserSessions = async (userId: string, limit = 10) => {
     .limit(limit);
 
   if (error || !data) {
-    console.log(error.message);
+    
     
    
     return []; 
