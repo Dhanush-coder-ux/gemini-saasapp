@@ -4,14 +4,17 @@ import CTA from "@/components/CTA"
 import LearningCard from "@/components/LearningCard"
 import LearningList from "@/components/LearningList"
 
-import { getAllCompanions, getRecentSessions, getUserSessions } from "@/lib/actions/companion.action"
+import { getAllCompanions, getRecentSessions, getUserCompanions, getUserSessions } from "@/lib/actions/companion.action"
 import { currentUser } from "@clerk/nextjs/server";
 
 
 
 const Page = async () => {
-  const companions = await getAllCompanions( {limit : 3});
+
+ 
   const user = await currentUser();
+   const companions = await getUserCompanions(user?.id);
+   const sort = companions.slice(0,3)
 
 
   
@@ -25,7 +28,7 @@ const Page = async () => {
       <section className="home-section">
         
 
-        {companions.map(( companion) => (
+        {sort.map(( companion) => (
            <LearningCard 
            key={companion.id}
               {...companion}
