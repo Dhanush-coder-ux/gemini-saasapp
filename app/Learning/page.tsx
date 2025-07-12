@@ -1,7 +1,9 @@
 import LearningCard from '@/components/LearningCard';
 import SearchInput from '@/components/SearchInput';
 import SubjectFilter from '@/components/SubjectFilter';
-import { getAllCompanions } from '@/lib/actions/companion.action';
+import { getAllCompanions, getUserCompanions } from '@/lib/actions/companion.action';
+import { currentUser } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
 
 
 const LearningVault =async  ({ searchParams }: SearchParams) => {
@@ -10,7 +12,11 @@ const LearningVault =async  ({ searchParams }: SearchParams) => {
   const subject =filters.subject ? filters.subject : "";
   const topic =filters.topic ? filters.topic : "";
 
-  const companions = await getAllCompanions({ subject , topic });
+  
+    const user = await currentUser();
+    if (!user) redirect('/sign-in');
+
+  const companions = await getUserCompanions(user.id);
 
 
   
@@ -29,7 +35,7 @@ const LearningVault =async  ({ searchParams }: SearchParams) => {
 
 
         <section className='companions-grid'>
-                      {companions.map((companion) => (
+                      {companions.map((companion)=> (
                     <LearningCard
                         key={companion.id}
                         {...companion}

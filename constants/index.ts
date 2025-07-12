@@ -7,6 +7,8 @@ export const subjects = [
   "economics",
 ];
 
+
+
 export const subjectsColors = {
   science: "#E5D0FF",
   maths: "#FFDA6E",
@@ -71,3 +73,4 @@ export const recentSessions = [
     color: "#C8FFDF",
   },
 ];
+

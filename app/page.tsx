@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 import CTA from "@/components/CTA"
+
 import LearningCard from "@/components/LearningCard"
 import LearningList from "@/components/LearningList"
 
@@ -17,6 +18,7 @@ const Page = async () => {
     <main>
       <h1 className='text-2xl'>Popular Learning</h1>
       <section className="home-section">
+        
 
         {companions.map(( companion) => (
            <LearningCard 

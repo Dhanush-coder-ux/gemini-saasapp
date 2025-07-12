@@ -34,9 +34,9 @@ const LearningList = ({ title ,companions ,classNames}:LearningListProps) => {
 
     </TableRow>
   </TableHeader>
-  <TableBody>
-      {companions?.map(( { id, subject, name ,topic , duration} )=>(
-        <TableRow key={id}>
+ <TableBody>
+                    {companions?.map(({id, subject, name, topic, duration}) => (
+                <TableRow key={id}>
           <TableCell>
             <Link href={`/Learning/${id}`}>
             <div className="flex items-center gap-2">
