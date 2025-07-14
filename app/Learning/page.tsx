@@ -16,7 +16,8 @@ const LearningVault =async  ({ searchParams }: SearchParams) => {
     const user = await currentUser();
     if (!user) redirect('/sign-in');
 
-  const companions = await getUserCompanions(user.id);
+  const companions = await getUserCompanions(user.id, {page: 1,limit: 10,subject,topic,});
+
 
 
   
