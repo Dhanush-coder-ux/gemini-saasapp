@@ -6,9 +6,9 @@ import { SignInButton,SignedIn,SignedOut,UserButton } from '@clerk/nextjs';
 import { useEffect, useState } from "react";
 
 const navItem =[
-    {label:"Home",href:'/'},
-    {label:"Learning Vault",href:'/Learning'},
-    {label:"My Journey",href:'/my-journey'},
+    {label:"Home",href:'/',img:"/images/home.svg"},
+    {label:"Learning Vault",href:'/Learning',img:"/images/profile.svg"},
+    {label:"My Journey",href:'/my-journey',img:"/images/vault.svg"},
     
 ]
 
@@ -74,8 +74,9 @@ const NavBar = () => {
                           href={item.href}
                           key={index}
                           onClick={() => setVisible(false)}
-                          className="text-lg  text-gray-800  hover:bg-gray-300 transition-colors"
+                          className="text-lg  text-gray-800 flex gap-2 p-2  hover:bg-gray-300 transition-colors"
                         >
+                          <img src={item.img} width={18} height={18} alt="" />
                           {item.label}
                         </Link>
                       ))}

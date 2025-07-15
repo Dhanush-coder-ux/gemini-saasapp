@@ -22,7 +22,7 @@ const Profile = async() => {
   
   return (
     <main className='min-lg:w-3/4'>
-      <section className=" flex justify-between border p-3 rounded-bl-4xl bg-gray-300 gap-4 max-sm:flex-col items-center">
+      <section className=" flex justify-between border border-gray-500 p-3 rounded-bl-4xl  bg-gray-300 gap-4 max-sm:flex-col items-center">
 
         <div className="flex gap-4 items-center ">
           <img 

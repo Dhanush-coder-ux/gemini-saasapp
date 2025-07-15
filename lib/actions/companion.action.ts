@@ -145,3 +145,39 @@ export const getUserCompanions = async (
 
   return data;
 };
+
+export const deleteCompanion = async (companionId: string) => {
+  const { userId } = await auth();
+  const supabase = createSupabaseClient();
+
+  // First check if the user is the owner of the companion
+  const { data: companion, error: fetchError } = await supabase
+    .from("companions")
+    .select("author")
+    .eq("id", companionId)
+    .single();
+
+  if (fetchError) return { error: "Companion not found." };
+
+  if (companion.author !== userId) {
+    return { error: "Unauthorized access." };
+  }
+
+  // Delete session history related to this companion (optional)
+  await supabase
+    .from("session_history")
+    .delete()
+    .eq("companion_id", companionId);
+
+  // Delete the companion
+  const { error: deleteError } = await supabase
+    .from("companions")
+    .delete()
+    .eq("id", companionId);
+
+  if (deleteError) {
+    return { error: deleteError.message };
+  }
+
+  return { success: true };
+};
