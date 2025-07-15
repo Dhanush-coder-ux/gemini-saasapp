@@ -1,3 +1,6 @@
+'use client'
+import Lottie from 'lottie-react'
+import robo from '../constants/AI Robot.json'
 import Link from 'next/link'
 
 
@@ -11,7 +14,8 @@ const CTA = () => {
       <p>Pick a name,Subject ,voice,& personality - and start learning 
         through voice conversation that feel natural and fun.
       </p>
-      <img src="images/cta.svg" width={363} height={232} alt="" />
+      
+      <Lottie animationData={robo} className="companion-lottie" />
       <button className='btn-primary'>
         <img src="/icons/plus.svg" width={12} height={12} alt="" />
         <Link href='/Learning/new' >
