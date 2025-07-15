@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 import CTA from "@/components/CTA"
+import CTAI from "@/components/CTAI";
 
 import LearningCard from "@/components/LearningCard"
 import LearningList from "@/components/LearningList"
@@ -49,6 +50,9 @@ const Page = async () => {
         />
         <CTA/>
       </section>
+      <div className="flex items-center">
+        <CTAI/>
+      </div>
     </main>
   )
 }
