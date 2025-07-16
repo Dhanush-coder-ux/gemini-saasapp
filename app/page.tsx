@@ -50,9 +50,10 @@ const Page = async () => {
         />
         <CTA/>
       </section>
-      <div className="flex items-center">
+      <section className="home-section">
         <CTAI/>
-      </div>
+        
+      </section>
     </main>
   )
 }

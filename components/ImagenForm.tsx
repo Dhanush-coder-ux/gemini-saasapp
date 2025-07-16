@@ -138,12 +138,12 @@ const onSubmit = async (values: z.infer<typeof formSchema>) => {
     <h2 className="text-lg font-semibold mb-2">Generated Worksheet:</h2>
 
     {/* Buttons appear on hover */}
-    <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+    <div className="absolute top-2 right-2 flex gap-2 ">
       <button
         onClick={() => navigator.clipboard.writeText(result)}
-        className="text-sm px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+        className="text-sm px-3 py-1 bg-accent text-white rounded hover:bg-white"
       >
-        Copy
+       <img src="/images/copy.svg" width={22} height={2} alt="" />
       </button>
       <button
         onClick={() => {
@@ -155,9 +155,9 @@ const onSubmit = async (values: z.infer<typeof formSchema>) => {
           a.click();
           URL.revokeObjectURL(url);
         }}
-        className="text-sm px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+        className="text-sm px-3 py-1 bg-accent text-white rounded hover:bg-white"
       >
-        Download
+        <img src="/images/download.svg"width={20} height={20} alt="" />
       </button>
     </div>
 
