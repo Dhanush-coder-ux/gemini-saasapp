@@ -23,7 +23,7 @@ export const createWorkSheet = async (formData: CreateWorkSheet) => {
     return { error: "No data returned from insert." };
   }
 
-  return { data: data[0] };
+  return  data[0];
 };
 
 export const getUserWorkSheet = async (userId: string ) => {
