@@ -1,7 +1,7 @@
 import LearningCard from '@/components/LearningCard';
 import SearchInput from '@/components/SearchInput';
 import SubjectFilter from '@/components/SubjectFilter';
-import { getAllCompanions, getUserCompanions } from '@/lib/actions/companion.action';
+import {  getUserCompanions } from '@/lib/actions/companion.action';
 import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 

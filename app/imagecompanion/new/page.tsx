@@ -3,6 +3,7 @@ import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation';
 import React from 'react'
 import ImageForm from '@/components/ImagenForm';
+import WorkSheet from '@/components/WorkSheet';
 
 
 const NewImagen = async () => {
@@ -18,7 +19,6 @@ const NewImagen = async () => {
       <article className='w-full gap-4 flex flex-col'>
           <h1>Image Builder</h1>
           <ImageForm/>
-          
       </article>
     </main>
   )

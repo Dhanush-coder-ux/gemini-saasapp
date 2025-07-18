@@ -7,6 +7,7 @@ const navItems =[
     {label:"Home",href:'/'},
     {label:"Learning Vault",href:'/Learning'},
     {label:"My Journey",href:'/my-journey'},
+    {label:"Image Companion",href:'/imagecompanion'},
     
 ]
 

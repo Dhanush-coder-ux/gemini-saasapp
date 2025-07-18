@@ -34,6 +34,11 @@ interface CreateCompanion {
   style: string;
   duration: number;
 }
+interface CreateWorkSheet {
+  topic: string;
+  grade:string;
+  worksheet:string;
+}
 
 interface GetAllCompanions {
   limit?: number;

@@ -19,7 +19,7 @@ const CompanionSession = async ( { params }:CompanionSessionProps) => {
 
   if (!user) redirect('/sign-in');
 
-  if(!companion) redirect('/companions');
+  if(!companion) redirect('/Learning');
 
 
   return (

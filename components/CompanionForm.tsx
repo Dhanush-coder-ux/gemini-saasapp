@@ -63,7 +63,7 @@ const onSubmit = async(values: z.infer<typeof formSchema>) =>{
     if(Companion){
       redirect(`/Learning/${Companion.id}`)
     }else{
-      console.log('Failed create companion');
+      
       redirect('/');
       
     }

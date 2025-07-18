@@ -8,15 +8,15 @@ export const createCompanion = async (formData: CreateCompanion) => {
   const supabase = createSupabaseClient();
 
   const { data, error } = await supabase
-    .from("companions") // ✅ table name should be a string
-    .insert([{ ...formData, author }]) // ✅ insert expects an array of records
+    .from("companions") // 
+    .insert([{ ...formData, author }]) 
     .select();
 
   if (error) {
     return (error.message)
   }
 
-  return data[0  ];
+  return data[0];
 };
 
 export const getAllCompanions = async ({ limit = 10, page = 1, subject, topic }: GetAllCompanions) => {

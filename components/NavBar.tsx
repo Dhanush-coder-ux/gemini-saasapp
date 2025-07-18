@@ -9,6 +9,7 @@ const navItem =[
     {label:"Home",href:'/',img:"/images/home.svg"},
     {label:"Learning Vault",href:'/Learning',img:"/images/profile.svg"},
     {label:"My Journey",href:'/my-journey',img:"/images/vault.svg"},
+    {label:"Image Companion",href:'/imagecompanion',img:"/images/vault.svg"},
     
 ]
 

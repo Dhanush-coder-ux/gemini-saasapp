@@ -4,12 +4,12 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { generateWorksheetFromImage } from "@/lib/actions/image-generation.action"
+import { createWorkSheet } from "@/lib/actions/worksheet.action"
 
 
 const formSchema = z.object({
@@ -34,8 +34,7 @@ const ImageForm = () => {
 const [isLoading, setIsLoading] = useState(false)
 
 const onSubmit = async (values: z.infer<typeof formSchema>) => {
-  if (isLoading) return  // ✅ Prevent double-submit while reading
-  setIsLoading(true)
+  if (isLoading) return  
 
   try {
     const file = values.image?.[0]
@@ -50,10 +49,16 @@ const onSubmit = async (values: z.infer<typeof formSchema>) => {
     reader.onloadend = async () => {
       const result = reader.result
       if (typeof result === "string") {
-        const base64 = result.split(',')[1] // Remove metadata
+        const base64 = result.split(',')[1]
         try {
           const worksheet = await generateWorksheetFromImage(base64, values.grade, values.topic)
           setResult(worksheet)
+             await createWorkSheet({
+        topic: values.topic,
+        grade: values.grade,
+        worksheet: worksheet,
+      });
+
         } catch (err) {
           console.error("Error generating worksheet:", err)
           alert("Worksheet generation failed. Please try again later.")
@@ -128,7 +133,10 @@ const onSubmit = async (values: z.infer<typeof formSchema>) => {
               </FormItem>
             )}
           />
-          <button type="submit" className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l w-full focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Generate Worksheet</button>
+          <button
+           type="submit"
+            disabled={isLoading}
+            className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l w-full focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Generate Worksheet</button>
         </form>
       </Form>
       </div>
