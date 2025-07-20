@@ -1,13 +1,13 @@
 export const dynamic = "force-dynamic";
 import CTA from "@/components/CTA"
 import CTAI from "@/components/CTAI";
+import Hero from "@/components/Hero";
 
 import LearningCard from "@/components/LearningCard"
 import LearningList from "@/components/LearningList"
 
-import { getAllCompanions, getRecentSessions, getUserCompanions, getUserSessions } from "@/lib/actions/companion.action"
+import {  getUserCompanions, getUserSessions } from "@/lib/actions/companion.action"
 import { currentUser } from "@clerk/nextjs/server";
-
 
 
 const Page = async () => {
@@ -25,7 +25,10 @@ const Page = async () => {
 
   return (
     <main>
+
+      <Hero/>
       <h1 className='text-2xl'>Popular Learning</h1>
+      
       <section className="home-section">
         
 
