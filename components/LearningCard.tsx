@@ -4,8 +4,6 @@ import Link from "next/link"
 import { useState } from "react"
 import { deleteCompanion } from "@/lib/actions/companion.action"
 import { useRouter } from "next/navigation"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Terminal } from "lucide-react"
 
 interface LearningCardProps {
   id: string
@@ -23,33 +21,23 @@ const hoverColors = ["hover:bg-blue-600", "hover:bg-red-600", "hover:bg-yellow-6
 const LearningCard = ({ id, name, color, topic, subject, duration }: LearningCardProps) => {
   const router = useRouter()
   const [deleted, setDeleted] = useState(false)
-  const [error, setError] = useState("")
   const [showConfirm, setShowConfirm] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const colorIndex = parseInt(id, 36) % 4
 
   const handleDelete = async () => {
+    setLoading(true)
     const res = await deleteCompanion(id)
     if (res?.success) {
       setDeleted(true)
       setShowConfirm(false)
-      setTimeout(() => router.refresh(), 2000)
-    } else {
-      setError(res?.error || "Failed to delete.")
+      setTimeout(() => router.refresh(), 1000)
     }
+    setLoading(false)
   }
 
-  if (deleted) {
-    return (
-      <Alert variant="default" className="h-full">
-        <Terminal className="h-4 w-4" />
-        <AlertTitle className="text-green-400">Deleted</AlertTitle>
-        <AlertDescription>
-          <p className="text-2xl text-green-500">Companion <strong>{name}</strong> has been deleted.!</p>
-        </AlertDescription>
-      </Alert>
-    )
-  }
+  if (deleted) return null
 
   return (
     <article className="companion-card relative" style={{ background: color }}>
@@ -83,37 +71,31 @@ const LearningCard = ({ id, name, color, topic, subject, duration }: LearningCar
       >
         Delete
       </button>
-{showConfirm && (
-  <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center">
-    <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm text-center">
-      <h2 className="text-lg font-semibold mb-2 text-gray-800">Confirm Deletion</h2>
-      <p className="text-sm text-gray-600 mb-4">
-        Are you sure you want to delete <strong>{name}</strong>?
-      </p>
-      <div className="flex justify-center gap-4">
-        <button
-          onClick={handleDelete}
-          className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
-        >
-          Yes, delete
-        </button>
-        <button
-          onClick={() => setShowConfirm(false)}
-          className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg text-sm"
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
-  </div>
-)}
 
-
-      {error && (
-        <Alert variant="destructive" className="mt-4">
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
+      {showConfirm && (
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm text-center">
+            <h2 className="text-lg font-semibold mb-2 text-gray-800">Confirm Deletion</h2>
+            <p className="text-sm text-gray-600 mb-4">
+              Are you sure you want to delete <strong>{name}</strong>?
+            </p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={handleDelete}
+                disabled={loading}
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+              >
+                {loading ? "Deleting..." : "Yes, delete"}
+              </button>
+              <button
+                onClick={() => setShowConfirm(false)}
+                className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg text-sm"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </article>
   )

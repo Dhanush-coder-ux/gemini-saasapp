@@ -16,14 +16,14 @@ const WorkSheetVault = async () => {
   const WorkSheets = await getUserWorkSheet(user.id);
   return (
     <main>
-        <section className='flex justify-between gap-4 max-sm:flex-col'>
+        {/* <section className='flex justify-between gap-4 max-sm:flex-col'>
           <h1>WorkSheet Vault</h1>
 
               <div className='flex gap-4'>
                 <SearchInput/>
                 <SubjectFilter/>
               </div>
-        </section>
+        </section> */}
 
 
         <section className='companions-grid'>

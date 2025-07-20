@@ -117,25 +117,13 @@ const downloadAsPDF = async () => {
         </h2>
       </div>
       
-      <div 
-        ref={worksheetRef}
-        className="prose prose-lg max-w-none 
-                  prose-headings:text-blue-700 
-                  prose-p:text-gray-800 
-                  prose-ul:list-disc prose-ul:pl-6 
-                  prose-ol:list-decimal prose-ol:pl-6
-                  prose-li:my-1
-                  prose-blockquote:border-l-4 prose-blockquote:border-blue-300 prose-blockquote:pl-4 prose-blockquote:italic
-                  prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded
-                  prose-pre:bg-gray-800 prose-pre:text-gray-100 prose-pre:p-4 prose-pre:rounded-lg
-                  prose-table:border-collapse prose-table:w-full
-                  prose-th:bg-gray-100 prose-th:p-2 prose-th:text-left
-                  prose-td:border prose-td:p-2
-                  prose-img:rounded-lg prose-img:shadow-md
-                  prose-a:text-blue-600 hover:prose-a:text-blue-800"
-      >
-        {formatWorksheetContent(worksheet)}
-      </div>
+      <div
+      ref={worksheetRef}
+      className="max-w-full overflow-hidden break-words text-[14px] leading-7 text-black"
+    >
+      {formatWorksheetContent(worksheet)}
+    </div>
+
       
       <div className="mt-6 pt-6 border-t border-gray-200 flex justify-end space-x-3">
         <button 
