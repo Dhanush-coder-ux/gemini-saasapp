@@ -138,11 +138,7 @@ export const getUserCompanions = async (
 
   const { data, error } = await query;
 
-  if (error) {
-    console.error("getUserCompanions error:", error.message);
-    return [];
-  }
-
+  if (error) return(error.message)
   return data;
 };
 

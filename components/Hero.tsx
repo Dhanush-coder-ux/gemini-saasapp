@@ -14,7 +14,7 @@ const Hero = () => {
   })
 
   return (
-    <div className='px-4 sm:px-20 xl:px-32 relative inline-flex flex-col w-full justify-center py-20 sm:py-10'>
+    <div className='px-4 sm:px-20 xl:px-32 relative inline-flex flex-col w-full justify-center py-10 sm:py-10'>
       <div className='text-center mb-5'>
         <h1 className='text-3xl sm:text-5xl md:text-6xl 2xl:text-7xl font-semibold mx-auto leading-[1.2]'>Create amazing Learning Experience With <br /> 
         <span className='text-blue-600'>AI tools</span></h1>

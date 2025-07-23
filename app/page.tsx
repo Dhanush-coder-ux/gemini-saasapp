@@ -32,7 +32,7 @@ const Page = async () => {
       <section className="home-section">
         
 
-        {sort.map(( companion) => (
+        {Array.isArray(sort) && sort.map(( companion) => (
            <LearningCard 
            key={companion.id}
               {...companion}
